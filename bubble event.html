@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bubbling Events</title>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <style>
+    #animatedDiv {
+      width: 200px;
+      height: 100px;
+      background-color: lightblue;
+      margin: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="animatedDiv">Initial Text</div>
+
+<script>
+ 
+  let number = 0;
+
+  function handleEvents() {
+    let interval = setInterval(function() {
+      number++;
+      console.log(Number incremented: ${number});
+    }, 1000);
+
+        setTimeout(function() {
+      $("#animatedDiv").slideDown(1000).fadeOut(1000).fadeIn(1000).slideUp(1000);
+
+      
+      setTimeout(function() {
+        $("#animatedDiv").append("<p>Appended Text</p>").prepend("<p>Prepended Text</p>");
+      }, 5000);
+
+      clearInterval(interval);
+    }, 5000);
+  }
+
+  
+  handleEvents();
+</script>
+
+</body>
+</html>
